@@ -15,7 +15,7 @@
             embedded
             vr-mode-ui="enabled: false"
             loading-screen="enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: true;"
+            arjs="sourceType: webcam; debugUIEnabled: false;"
         >
             <a-assets>
                 <a-asset-item
@@ -29,7 +29,7 @@
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     scale="0.3448899709381412 0.3448899709381412 0.3448899709381412"
-                    gps-entity-place="latitude: 53.40037; longitude: -2.631655;"
+                    gps-new-entity-place="latitude: 53.40037; longitude: -2.631655;"
                 ></a-entity>
 
                 <a-entity
@@ -37,7 +37,7 @@
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     scale="0.3448899709381412 0.3448899709381412 0.3448899709381412"
-                    gps-entity-place="latitude: 53.40037; longitude: -2.631505;"
+                    gps-new-entity-place="latitude: 53.40037; longitude: -2.631505;"
                 ></a-entity>
                 
                 <a-entity
@@ -45,11 +45,11 @@
                 animation-mixer="loop: repeat"
                 gltf-model="#animated-asset"
                 scale="0.3448899709381412 0.3448899709381412 0.3448899709381412"
-                gps-entity-place="latitude: 53.400319; longitude: -2.631424;"
-            ></a-entity>
+                gps-new-entity-place="latitude: 53.400319; longitude: -2.631424;"
+                ></a-entity>
             <a-sphere id="marker" color="red" gps-projected-entity-place="latitude: 53.400358; longitude: -2.631517;" visible="true" radius="1"></a-sphere>
-            <a-entity material='color: red' geometry='primitive: box' gps-entity-place="latitude: 53.4003577; longitude: -2.63151667;" scale="10 10 10"></a-entity>
-            <a-camera gps-camera='gpsMinDistance: 5' rotation-reader></a-camera>
+            <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 53.4003577; longitude: -2.63151667;" scale="10 10 10"></a-entity>
+            <a-camera gps-new-camera rotation-reader></a-camera>
             <a-text id="gps-text" value="Waiting for GPS..." position="0 2 -3" color="black" scale="0.5 0.5 0.5"></a-text>
         </a-scene>
         <script>
