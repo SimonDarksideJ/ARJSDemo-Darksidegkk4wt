@@ -50,24 +50,24 @@
             <a-sphere id="marker" color="red" gps-projected-entity-place="latitude: 53.400358; longitude: -2.631517;" visible="true" radius="1"></a-sphere>
             <a-entity material='color: red' geometry='primitive: box' gps-entity-place="latitude: 53.4003577; longitude: -2.63151667;" scale="10 10 10"></a-entity>
             <a-camera gps-camera='gpsMinDistance: 5' rotation-reader></a-camera>
-            <a-text id="latText" value="Latitude: " position="0 2 -3" color="black" scale="0.5 0.5 0.5"></a-text>
-            <a-text id="longText" value="Longitude: " position="0 1.5 -3" color="black" scale="0.5 0.5 0.5"></a-text>
+            <a-text id="gps-text" value="Waiting for GPS..." position="0 2 -3" color="black" scale="0.5 0.5 0.5"></a-text>
         </a-scene>
         <script>
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition((position) => {
-                const lat = position.coords.latitude;
-                const long = position.coords.longitude;
-                const marker = document.querySelector('#marker');
-                marker.setAttribute('gps-projected-entity-place', `latitude: ${lat}; longitude: ${long};`);
-                console.log(`Your coordinate is: Lat: ${lat}, Long: ${long}`);
+            // Function to update the text element with the current GPS coordinates
+            function updatePosition(position) {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              const gpsText = document.getElementById('gps-text');
+              gpsText.setAttribute('value', `Latitude: ${latitude}, Longitude: ${longitude}`);
+            }
       
-                // Update text elements with GPS data
-                document.querySelector('#latText').setAttribute('value', `Latitude: ${lat}`);
-                document.querySelector('#longText').setAttribute('value', `Longitude: ${long}`);
+            // Watch the user's position and update the text element continuously
+            if (navigator.geolocation) {
+              navigator.geolocation.watchPosition(updatePosition, (error) => {
+                console.error('Error getting GPS position:', error);
               });
             } else {
-              console.log("Geolocation is not supported by this browser.");
+              console.error('Geolocation is not supported by this browser.');
             }
           </script>        
     </body>
